@@ -7,7 +7,7 @@ const getApiBaseUrl = () => {
     }
     // For production (Render), use the Render service URL
     // Replace 'your-backend-service.onrender.com' with your actual Render service URL
-    return 'https://your-backend-service.onrender.com/api';
+    return 'https://showcase-scholar.onrender.com/api';
 };
 const API_BASE_URL = getApiBaseUrl();
 
