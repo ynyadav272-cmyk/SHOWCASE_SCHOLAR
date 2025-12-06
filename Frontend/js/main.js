@@ -1,13 +1,13 @@
-// API Base URL - dynamically detect hostname for network access
+// API Base URL - Use Render production URL or localhost for development
 const getApiBaseUrl = () => {
     const hostname = window.location.hostname;
     // If accessing from localhost, use localhost for API
-    // Otherwise use the same hostname (for network access)
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://localhost:3000/api';
     }
-    // For network access, use the same hostname but port 3000
-    return `http://${hostname}:3000/api`;
+    // For production (Render), use the Render service URL
+    // Replace 'your-backend-service.onrender.com' with your actual Render service URL
+    return 'https://your-backend-service.onrender.com/api';
 };
 const API_BASE_URL = getApiBaseUrl();
 
