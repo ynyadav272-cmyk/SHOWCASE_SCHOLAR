@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOW CASE SCHOLAR</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">SHOW CASE SCHOLAR</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Auth Links (shown when not logged in) -->
+                <li id="login-link-item" class="auth-nav-item">
+                    <a href="login.html">Login</a>
+                </li>
+                <li id="register-link-item" class="auth-nav-item">
+                    <a href="register.html">Register</a>
+                </li>
+                <!-- User Menu (shown when logged in) -->
+                <li id="user-menu-item" class="auth-nav-item" style="display: none;">
+                    <span id="user-name" style="margin-right: 10px; color: var(--primary-color); font-weight: 600;"></span>
+                    <a href="#" id="logout-link" style="color: #dc3545;">Logout</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Message (shown after login) -->
+    <div id="welcome-message" style="display: none; background: linear-gradient(135deg, #d4edda, #c3e6cb); padding: 1rem 0; margin-bottom: 2rem;">
+        <div class="container" style="text-align: center;">
+            <div style="color: #155724; font-size: 1.1rem;">
+                <strong>👋 Welcome back, <span id="welcome-user-name"></span>!</strong>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">You have successfully logged in to your account.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Showcase Your Work</h1>
+                <p>Create a stunning digital portfolio to highlight your achievements and projects</p>
+                <a href="portfolio.html" class="btn btn-primary">View Portfolios</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Creative Design</h3>
+                    <p>Beautiful and modern UI to showcase your work</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive</h3>
+                    <p>Works perfectly on all devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Reliable</h3>
+                    <p>Lightning-fast loading times</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure</h3>
+                    <p>Your data is safe with us</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="students-preview">
+        <div class="container">
+            <h2>Featured Students</h2>
+            <div id="students-container" class="students-grid">
+                <!-- Students will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SHOW CASE SCHOLAR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load scripts in correct order -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Update navigation and show welcome message
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLinkItem = document.getElementById('login-link-item');
+            const registerLinkItem = document.getElementById('register-link-item');
+            const userMenuItem = document.getElementById('user-menu-item');
+            const userName = document.getElementById('user-name');
+            const logoutLink = document.getElementById('logout-link');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const welcomeUserName = document.getElementById('welcome-user-name');
+
+            // Check if user is authenticated
+            if (Auth && Auth.isAuthenticated()) {
+                const user = Auth.getUser();
+                if (user) {
+                    // User is logged in
+                    userName.textContent = user.name;
+                    loginLinkItem.style.display = 'none';
+                    registerLinkItem.style.display = 'none';
+                    userMenuItem.style.display = 'block';
+
+                    // Check for login success message
+                    const loginSuccess = sessionStorage.getItem('loginSuccess');
+                    const storedUserName = sessionStorage.getItem('userName');
+
+                    if (loginSuccess === 'true' && storedUserName) {
+                        // Show welcome message
+                        welcomeUserName.textContent = storedUserName;
+                        welcomeMessage.style.display = 'block';
+
+                        // Hide message after 5 seconds
+                        setTimeout(() => {
+                            welcomeMessage.style.display = 'none';
+                            sessionStorage.removeItem('loginSuccess');
+                            sessionStorage.removeItem('userName');
+                        }, 5000);
+                    }
+                } else {
+                    // No user data
+                    loginLinkItem.style.display = 'block';
+                    registerLinkItem.style.display = 'block';
+                    userMenuItem.style.display = 'none';
+                }
+            } else {
+                // Not authenticated
+                loginLinkItem.style.display = 'block';
+                registerLinkItem.style.display = 'block';
+                userMenuItem.style.display = 'none';
+            }
+
+            // Logout functionality
+            if (logoutLink) {
+                logoutLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (Auth && Auth.logout) {
+                        Auth.logout();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

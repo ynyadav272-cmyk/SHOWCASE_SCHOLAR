@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SHOW CASE SCHOLAR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .auth-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 400px;
+        }
+        .auth-card h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .auth-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 0.75rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .success-message {
+            background: #efe;
+            color: #3c3;
+            padding: 0.75rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">SHOW CASE SCHOLAR</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="auth-container">
+        <div class="container">
+            <div class="auth-card">
+                <h2>Login</h2>
+                <div id="error-message" class="error-message"></div>
+                <div id="success-message" class="success-message"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group" style="text-align: right; margin-bottom: 1rem;">
+                        <a href="forgot-password.html" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+                <div class="auth-links">
+                    <p>Don't have an account? <a href="register.html">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SHOW CASE SCHOLAR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const errorDiv = document.getElementById('error-message');
+            const successDiv = document.getElementById('success-message');
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const result = await Auth.login(email, password);
+
+            if (result.success) {
+                successDiv.textContent = 'Login successful! Redirecting...';
+                successDiv.style.display = 'block';
+            // Store user info for welcome message
+            sessionStorage.setItem('loginSuccess', 'true');
+            sessionStorage.setItem('userName', result.data.user.name);
+            sessionStorage.setItem('userRole', result.data.user.role);
+            
+            // Redirect based on role or default to home
+            setTimeout(() => {
+                const user = result.data.user;
+                if (user.role === 'admin') {
+                    window.location.href = 'portfolio.html'; // Admin goes to portfolio
+                } else {
+                    window.location.href = 'index.html'; // Students go to home
+                }
+            }, 1500);
+        } else {
+            errorDiv.textContent = result.error;
+            errorDiv.style.display = 'block';
+        }
+    });
+</script>

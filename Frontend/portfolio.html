@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolios - SHOW CASE SCHOLAR</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">SHOW CASE SCHOLAR</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="create-portfolio-cta">
+        <div class="container">
+            <button class="portfolio-fab" id="open-portfolio-modal">
+                <span class="fab-icon">+</span>
+                <span class="fab-label">Create a student portfolio</span>
+            </button>
+            <p class="cta-hint">Click the button to launch the builder and add skills, projects, achievements, and contact details.</p>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <div class="container">
+            <h1>Student Portfolios</h1>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="engineering">Engineering</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="arts">Arts</button>
+            </div>
+            <div id="portfolio-container" class="portfolio-grid">
+                <!-- Portfolios will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <div class="portfolio-modal" id="portfolio-modal" aria-hidden="true">
+        <div class="modal-backdrop" id="portfolio-modal-backdrop"></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="portfolio-modal-title">
+            <button class="modal-close" id="close-portfolio-modal" aria-label="Close form">&times;</button>
+            <div class="form-card">
+                <div class="form-header">
+                    <div>
+                        <h1 id="portfolio-modal-title">Create a Student Portfolio</h1>
+                        <p>Add a student's profile along with their skills, standout projects, achievements, and contact details. Everything you submit instantly appears in the public sections below.</p>
+                    </div>
+                    <div class="form-header-actions">
+                        <div class="form-hint">
+                            <p>All fields marked with * are required. Use the "Add" buttons to include multiple projects or achievements.</p>
+                        </div>
+                        <button type="button" class="btn btn-ghost" id="demo-fill-btn">
+                            ✨ Auto-fill sample portfolio
+                        </button>
+                    </div>
+                </div>
+                <form id="portfolio-form">
+                    <div class="form-subsection">
+                        <h2>Student Details</h2>
+                        <div class="form-grid">
+                            <label class="input-field">
+                                <span>Full Name *</span>
+                                <input type="text" id="student-name" placeholder="e.g. Alicia Gomez" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Email *</span>
+                                <input type="email" id="student-email" placeholder="name@example.com" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Major *</span>
+                                <input type="text" id="student-major" placeholder="e.g. Computer Science" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Year *</span>
+                                <select id="student-year" required>
+                                    <option value="">Select year</option>
+                                    <option value="Freshman">Freshman</option>
+                                    <option value="Sophomore">Sophomore</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label class="input-field">
+                            <span>Bio *</span>
+                            <textarea id="student-bio" rows="3" placeholder="Short intro about the student" required></textarea>
+                        </label>
+                        <label class="input-field">
+                            <span>Skills (comma separated) *</span>
+                            <input type="text" id="student-skills" placeholder="JavaScript, UI/UX, Leadership" required>
+                        </label>
+                    </div>
+
+                    <div class="form-subsection">
+                        <div class="subsection-header">
+                            <h2>Projects</h2>
+                            <button type="button" class="link-btn" id="add-project-btn">+ Add project</button>
+                        </div>
+                        <div id="projects-group" class="repeat-group"></div>
+                        <template id="project-card-template">
+                            <div class="group-card">
+                                <div class="group-title">Project</div>
+                                <label class="input-field">
+                                    <span>Project Name *</span>
+                                    <input type="text" class="project-name" placeholder="e.g. Smart Campus App">
+                                </label>
+                                <label class="input-field">
+                                    <span>Description *</span>
+                                    <textarea class="project-description" rows="2" placeholder="What makes this project special?"></textarea>
+                                </label>
+                                <div class="form-grid">
+                                    <label class="input-field">
+                                        <span>Technologies (comma separated)</span>
+                                        <input type="text" class="project-tech" placeholder="React, Node.js">
+                                    </label>
+                                    <label class="input-field">
+                                        <span>Date</span>
+                                        <input type="date" class="project-date">
+                                    </label>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="form-subsection">
+                        <div class="subsection-header">
+                            <h2>Achievements</h2>
+                            <button type="button" class="link-btn" id="add-achievement-btn">+ Add achievement</button>
+                        </div>
+                        <div id="achievements-group" class="repeat-group"></div>
+                        <template id="achievement-card-template">
+                            <div class="group-card">
+                                <div class="group-title">Achievement</div>
+                                <label class="input-field">
+                                    <span>Title *</span>
+                                    <input type="text" class="achievement-title" placeholder="e.g. Hackathon Winner">
+                                </label>
+                                <label class="input-field">
+                                    <span>Description *</span>
+                                    <textarea class="achievement-description" rows="2" placeholder="Describe the recognition"></textarea>
+                                </label>
+                                <label class="input-field">
+                                    <span>Date</span>
+                                    <input type="date" class="achievement-date">
+                                </label>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="form-subsection">
+                        <h2>Contact Highlight</h2>
+                        <p class="subsection-note">Add a short note so interested people know how to reach the student. This uses the existing contact endpoint.</p>
+                        <label class="input-field">
+                            <span>Preferred Message</span>
+                            <textarea id="contact-message" rows="2" placeholder="Feel free to reach out for collaborations!"></textarea>
+                        </label>
+                    </div>
+
+                    <div id="portfolio-form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+
+                    <button type="submit" class="btn btn-primary submit-btn">Publish Portfolio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div class="portfolio-modal" id="edit-student-modal" aria-hidden="true">
+        <div class="modal-backdrop" id="edit-student-modal-backdrop"></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="edit-student-modal-title">
+            <button class="modal-close" id="close-edit-student-modal" aria-label="Close form">&times;</button>
+            <div class="form-card">
+                <div class="form-header">
+                    <div>
+                        <h1 id="edit-student-modal-title">Edit Student Details</h1>
+                        <p>Update the student's profile information.</p>
+                    </div>
+                </div>
+                <form id="edit-student-form">
+                    <input type="hidden" id="edit-student-id">
+                    <div class="form-subsection">
+                        <h2>Student Details</h2>
+                        <div class="form-grid">
+                            <label class="input-field">
+                                <span>Full Name *</span>
+                                <input type="text" id="edit-student-name" placeholder="e.g. Alicia Gomez" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Email *</span>
+                                <input type="email" id="edit-student-email" placeholder="name@example.com" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Major *</span>
+                                <input type="text" id="edit-student-major" placeholder="e.g. Computer Science" required>
+                            </label>
+                            <label class="input-field">
+                                <span>Year *</span>
+                                <select id="edit-student-year" required>
+                                    <option value="">Select year</option>
+                                    <option value="Freshman">Freshman</option>
+                                    <option value="Sophomore">Sophomore</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label class="input-field">
+                            <span>Bio *</span>
+                            <textarea id="edit-student-bio" rows="3" placeholder="Short intro about the student" required></textarea>
+                        </label>
+                        <label class="input-field">
+                            <span>Skills (comma separated) *</span>
+                            <input type="text" id="edit-student-skills" placeholder="JavaScript, UI/UX, Leadership" required>
+                        </label>
+                    </div>
+
+                    <div id="edit-student-form-feedback" class="form-feedback" role="alert" aria-live="polite"></div>
+
+                    <button type="submit" class="btn btn-primary submit-btn">Update Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="portfolio-modal" id="delete-confirm-modal" aria-hidden="true">
+        <div class="modal-backdrop" id="delete-confirm-modal-backdrop"></div>
+        <div class="modal-content" role="dialog" aria-modal="true" style="max-width: 500px;">
+            <div class="form-card">
+                <h2 style="margin-bottom: 1rem;">Confirm Delete</h2>
+                <p id="delete-confirm-message" style="margin-bottom: 2rem;"></p>
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn-ghost" id="cancel-delete-btn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirm-delete-btn" style="background: #dc2626;">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SHOW CASE SCHOLAR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

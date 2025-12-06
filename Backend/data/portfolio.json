@@ -1,0 +1,238 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "John Do",
+      "major": "Computer Science",
+      "year": "Senior",
+      "bio": "Passionate software developer with expertise in web development and machine learning.",
+      "skills": [
+        "JavaScript",
+        "Python",
+        "React",
+        "Node.js",
+        "Machine Learning"
+      ],
+      "email": "john.doe@example.com",
+      "createdAt": "2024-01-15T10:00:00.000Z",
+      "updatedAt": "2025-12-06T20:15:04.474Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "major": "Graphic Design",
+      "year": "Junior",
+      "bio": "Creative designer specializing in UX/UI design and branding.",
+      "skills": [
+        "Figma",
+        "Adobe Creative Suite",
+        "UI/UX Design",
+        "Branding"
+      ],
+      "email": "jane.smith@example.com",
+      "createdAt": "2024-01-16T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "major": "Business Administration",
+      "year": "Senior",
+      "bio": "Business student with focus on entrepreneurship and marketing.",
+      "skills": [
+        "Marketing",
+        "Business Strategy",
+        "Finance",
+        "Leadership"
+      ],
+      "email": "mike.johnson@example.com",
+      "createdAt": "2024-01-17T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Sarah Williams",
+      "major": "Engineering",
+      "year": "Graduate",
+      "bio": "Mechanical engineer with expertise in robotics and automation.",
+      "skills": [
+        "CAD",
+        "Robotics",
+        "Automation",
+        "3D Modeling"
+      ],
+      "email": "sarah.williams@example.com",
+      "createdAt": "2024-01-18T10:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "E-Commerce Platform",
+      "description": "A full-stack e-commerce platform built with React and Node.js featuring user authentication, payment integration, and admin dashboard.",
+      "studentName": "John Doe",
+      "date": "2024-01-20T10:00:00.000Z",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Stripe"
+      ],
+      "createdAt": "2024-01-20T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Brand Identity Design",
+      "description": "Complete brand identity design for a startup including logo, color palette, and marketing materials.",
+      "studentName": "Jane Smith",
+      "date": "2024-01-21T10:00:00.000Z",
+      "technologies": [
+        "Figma",
+        "Adobe Illustrator",
+        "Photoshop"
+      ],
+      "createdAt": "2024-01-21T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Market Analysis Tool",
+      "description": "Business intelligence tool for analyzing market trends and competitor data.",
+      "studentName": "Mike Johnson",
+      "date": "2024-01-22T10:00:00.000Z",
+      "technologies": [
+        "Python",
+        "Data Analytics",
+        "Tableau"
+      ],
+      "createdAt": "2024-01-22T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Automated Robot Arm",
+      "description": "Design and implementation of a 6-axis robotic arm with computer vision integration.",
+      "studentName": "Sarah Williams",
+      "date": "2024-01-23T10:00:00.000Z",
+      "technologies": [
+        "CAD",
+        "Arduino",
+        "Computer Vision",
+        "Python"
+      ],
+      "createdAt": "2024-01-23T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Research Hub",
+      "description": "Web platform that matches students with research advisors based on interests and availability.",
+      "technologies": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "date": "2023-11-14T18:30:00.000Z",
+      "studentName": "Alicia Gomez",
+      "createdAt": "2025-12-06T20:07:25.371Z"
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Hackathon Winner",
+      "description": "First place in the annual university hackathon with project 'Smart City Solutions'.",
+      "studentName": "John Doe",
+      "date": "2024-01-10T10:00:00.000Z",
+      "createdAt": "2024-01-10T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Design Award",
+      "description": "Recipient of the Best UI/UX Design Award at the Design Excellence Competition.",
+      "studentName": "Jane Smith",
+      "date": "2024-01-12T10:00:00.000Z",
+      "createdAt": "2024-01-12T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Business Plan Competition",
+      "description": "Runner-up in the regional business plan competition with innovative startup idea.",
+      "studentName": "Mike Johnson",
+      "date": "2024-01-14T10:00:00.000Z",
+      "createdAt": "2024-01-14T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Research Publication",
+      "description": "Published research paper on 'Advanced Robotics in Manufacturing' in IEEE Journal.",
+      "studentName": "Sarah Williams",
+      "date": "2024-01-16T10:00:00.000Z",
+      "createdAt": "2024-01-16T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Dean’s Leadership Fellow",
+      "description": "Recognized for launching a peer mentorship community that paired 120+ first-year students with upperclass mentors.",
+      "date": "2023-09-04T18:30:00.000Z",
+      "studentName": "Alicia Gomez",
+      "createdAt": "2025-12-06T20:07:25.375Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Sumit",
+      "email": "sk345@gmail.com",
+      "message": "hiii",
+      "date": "2025-11-08T19:21:39.748Z"
+    },
+    {
+      "id": 2,
+      "name": "Alicia Gomez",
+      "email": "alicia.gomez@example.com",
+      "message": "Excited to collaborate on mission-driven internships and research. Let’s connect!",
+      "date": "2025-12-06T20:07:25.378Z"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "akhilesh",
+      "email": "ak123@gmail.com",
+      "password": "$2b$10$i7zn/hJIs.puHQFiKvNw9O6gnUT2ZGDEAD6l58MTwg1py7S0wpB/W",
+      "role": "student",
+      "createdAt": "2025-11-08T20:14:32.399Z"
+    },
+    {
+      "id": 2,
+      "name": "sumit ",
+      "email": "sk123@gmail.com",
+      "password": "$2b$10$D4pEiG6WpxsGHJPXK9xQMOzKWoMvugo2XNKlCGyL//yGTf1mputyO",
+      "role": "student",
+      "createdAt": "2025-11-08T20:18:53.494Z"
+    },
+    {
+      "id": 3,
+      "name": "akhilesh",
+      "email": "ynyadav272@gmail.com",
+      "password": "$2b$10$0IWGWOrnRRvSeGd99VagEuJwkFuUT2TCNL.Z1ZIS4qh9JumqFx4s.",
+      "role": "student",
+      "createdAt": "2025-11-09T06:29:13.290Z",
+      "updatedAt": "2025-11-09T06:31:13.889Z"
+    },
+    {
+      "id": 4,
+      "name": "arpan",
+      "email": "ar123@gmail.com",
+      "password": "$2b$10$98/3NO1vpMdJdzi1BtqPneOnCm3gLFIHMqaOhGZOItT7lnDAUijy2",
+      "role": "student",
+      "createdAt": "2025-11-10T06:24:08.320Z"
+    },
+    {
+      "id": 5,
+      "name": "aman ",
+      "email": "masobo5898@wivstore.com",
+      "password": "$2b$10$ZKgTB0Flgxcu320Et5sWZOHu6eC7d1R6ApNkyKwIGGibVq7.h3ARK",
+      "role": "student",
+      "createdAt": "2025-11-10T06:26:13.593Z",
+      "updatedAt": "2025-11-10T06:26:59.481Z"
+    }
+  ],
+  "resetTokens": []
+}
